@@ -2,7 +2,7 @@
 # Chromedriver Dockerfile
 #
 
-FROM blueimp/basedriver
+FROM allthings/basedriver
 
 # Install chromedriver (which depends on chromium):
 RUN export DEBIAN_FRONTEND=noninteractive \
