@@ -12,7 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   # Start chromium via wrapper script with --no-sandbox argument:
   && mv /usr/lib/chromium/chromium /usr/lib/chromium/chromium-original \
   && printf '%s\n' '#!/bin/sh' \
-    'exec /usr/lib/chromium/chromium-original --no-sandbox "$@"' \
+    'exec /usr/lib/chromium/chromium-original --no-sandbox --disable-dev-shm-usage "$@"' \
     > /usr/lib/chromium/chromium && chmod +x /usr/lib/chromium/chromium \
   # Remove obsolete files:
   && apt-get clean \
@@ -28,4 +28,8 @@ RUN ln -s /usr/lib/chromium/chromedriver /usr/local/bin/
 
 USER webdriver
 
-CMD ["chromedriver", "--url-base=/wd/hub", "--port=4444", "--whitelisted-ips="]
+ENTRYPOINT ["entrypoint", "chromedriver"]
+
+CMD ["--port=4444", "--whitelisted-ips="]
+
+EXPOSE 4444
