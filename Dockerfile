@@ -35,6 +35,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 
 USER webdriver
 
+ENV DBUS_SESSION_BUS_ADDRESS="autolaunch:"
+
 ENTRYPOINT ["entrypoint", "chromedriver"]
 
 CMD ["--port=4444", "--whitelisted-ips="]
