@@ -9,7 +9,7 @@ help:  ## Display this help
 ##@ General
 
 TAG = latest
-build_container: ## Builds allthings/wdio:latest container locally. Use TAG=<your tag> or leave for "latest"
+build_container: ## Builds allthings/chromedriver:latest container locally. Use TAG=<your tag> or leave for "latest"
 	docker build --no-cache -t allthings/chromedriver:$(TAG) .
 
 push_tag: ## Pushes the given tag to dockerhub. Use TAG=<your tag> or leave for "latest"
